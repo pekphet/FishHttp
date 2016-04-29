@@ -67,7 +67,7 @@ public class RequestHelper<T extends BaseEntity> {
         return this;
     }
 
-    public RequestHelper UrlParam(Object object) {
+    public RequestHelper UrlParam(Serializable object) {
         Map<String, Object> data = Bean2Map.trans(object);
         boolean isFirstParam = false;
         for (String key : data.keySet()) {
