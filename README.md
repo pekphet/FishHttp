@@ -3,8 +3,8 @@ A SUPER-LIGHT HTTP REQUEST UTIL
 
 This http request use Annotation & Builder mode to configure request params, so is more easily to use
 
-For android studio developers
-After:
+For android studio developers<br/>
+After:<br/>
 1.Download or git clone this module in your project dir.</br>
 2.Open settings.gradle add ":fishhttp" behind include ':app' and etc. use comma to separate them</br>
 3.Open module setting -> your module which use http util ->Dependencies -> module dependency :fishhttp</br>
