@@ -38,7 +38,8 @@ finally, you only need call request.post/get(Context, Handler) to start http req
 Happy to send email to me with suggestions or just chat with me~~~</br>
 email: pekphet@126.com</br>
 
-
+UPDATE 0.2  </br>
+REMOVE BaseEntity Type limit of Request result~
 
 
 
