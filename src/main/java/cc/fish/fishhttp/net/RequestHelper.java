@@ -26,7 +26,7 @@ import cc.fish.fishhttp.util.ZLog;
 /**
  * Created by fish on 16-4-27.
  */
-public class RequestHelper<T extends BaseEntity> {
+public class RequestHelper<T> {
     private static final int TIME_OUT = 8 * 1000;
     private static final String UTF8 = "UTF-8";
     private static final int DATA_CORRECTLY = 0;
@@ -165,11 +165,7 @@ public class RequestHelper<T extends BaseEntity> {
         String responseContent = getStrByInputStream(is);
         ZLog.e("JSON GOT", responseContent);
         T responseObj = new Gson().fromJson(responseContent, mResultClz);
-        if (responseObj.getCode() == DATA_CORRECTLY) {
-            doSuccess(h, responseObj);
-        } else {
-            doFailed(h, responseObj.getMessage());
-        }
+        doSuccess(h, responseObj);
         is.close();
         connection.disconnect();
     }
