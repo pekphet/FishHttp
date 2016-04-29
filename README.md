@@ -20,6 +20,7 @@ Start use it~~
 @NetUrl(your connect url)
 @Result(will trans the response json to this class)
 RequestHelper<RESULT> request
+And MUST CALL NetInject to inject annotations to this class  before use this entity~~~
 PS: the generate type will as callback param giving you~
 2.if you need url params, you can use the method:
 request.UrlParam(Serializable object) -> it returns request self so you can use "." continue~
