@@ -13,6 +13,8 @@ After:<br/>
     android.permission.READ_PHONE_STATE</br>
     android.permission.ACCESS_NETWORK_STATE</br>
     android.permission.ACCESS_WIFI_STATE</br>
+5.In build.gradle of the Project: in node:buildscript -> dependencies<br/>
+add classpath 'me.tatarka:gradle-retrolambda:3.2.5' to support lambda exp.<br/>
 
 Start use it</br>
 1.Create a RequestHelper entity~   like this:</br>
