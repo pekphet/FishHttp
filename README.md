@@ -34,7 +34,8 @@ request.Success((result) -> {DO SUCCESS WITH result entity})
 
 finally, you only need call request.post/get(Context, Handler) to start http request~~
 
-
+Happy to send email to me with suggestions or just chat with me~~~
+email: pekphet@126.com
 
 
 
