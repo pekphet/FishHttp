@@ -34,4 +34,5 @@ captures/
 
 build/
 .iml
+.git/
 
