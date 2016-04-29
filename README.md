@@ -14,7 +14,7 @@ After:
     android.permission.ACCESS_NETWORK_STATE</br>
     android.permission.ACCESS_WIFI_STATE</br>
 
-Start use it~~</br>
+Start use it</br>
 1.Create a RequestHelper entity~   like this:</br>
 @NetMethod(GET or POST)</br>
 @NetUrl(your connect url)</br>
