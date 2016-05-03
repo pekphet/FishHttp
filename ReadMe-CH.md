@@ -40,6 +40,7 @@ request.Success((result) -> {//TODO WITH result})<br/>
 欢迎拍砖到我的邮箱哦~~<br/>
 <br/>
 EMAIL: pekphet@126.com<br/>
+QQ群: 537947025<br/>
 
 更新0.2<br/>
 移除BASEENTITY的限制  可以解析任何javabean<br/>
