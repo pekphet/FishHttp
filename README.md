@@ -1,5 +1,6 @@
 # FishHttp
-A SUPER-LIGHT HTTP REQUEST UTIL
+A SUPER-LIGHT HTTP REQUEST UTIL<br/>
+PS: Chinese-Readme in  ReadMe-CH.md file<br/>
 
 This http request use Annotation & Builder mode to configure request params, so is more easily to use
 
