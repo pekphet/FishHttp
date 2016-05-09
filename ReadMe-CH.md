@@ -2,6 +2,9 @@
 
 是一个超级轻量级的网络HTTP请求框架<br/>
 
+<a href="https://github.com/pekphet/FishHttpDemo">这里有DEMO哦>3<</a>
+
+
 fishhttp网络框架使用注解和伪Builder方式来配置请求参数， 最大限度的增加便捷性<br/>
 对于AndroidStudio的开发者<br/>
 准备工作：<br/>
