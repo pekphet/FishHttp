@@ -10,7 +10,7 @@ public class ZLog {
     final private static boolean DEBUG = false;
     final private static boolean INFO = false;
     final private static boolean WARNING = false;
-    final private static boolean ERROR = false;
+    final private static boolean ERROR = true;
 
     public static void v(String tag, String msg) {
         if (VERBOSE) {

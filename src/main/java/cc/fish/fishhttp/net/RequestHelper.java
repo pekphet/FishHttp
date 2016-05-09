@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 
 import cc.fish.fishhttp.thread.Done;
@@ -36,6 +37,8 @@ public class RequestHelper<T> {
     private StringBuilder mPostParam = new StringBuilder();
     private Done<T> mSuccess = null;
     private Done<String> mFailed = null;
+
+    private Map<String, String> headerProps = new HashMap<>();
 
 
     final static private String NO_NETWORK = "Have No Network!";
@@ -67,15 +70,28 @@ public class RequestHelper<T> {
         return this;
     }
 
-    public RequestHelper UrlParam(Serializable object) {
+    public RequestHelper UrlParam(Serializable object, boolean isFirstPara) {
         Map<String, Object> data = Bean2Map.trans(object);
-        boolean isFirstParam = false;
+        boolean isFirstParam = isFirstPara;
         for (String key : data.keySet()) {
             mUrlParam.append(isFirstParam ? "?" : "&");
             mUrlParam.append(key).append("=").append(data.get(key));
-            isFirstParam = true;
+            isFirstParam = false;
         }
         return this;
+    }
+
+    public RequestHelper UrlParam(Serializable object) {
+        return UrlParam(object, true);
+    }
+
+    public RequestHelper UrlParam(String key, String value, boolean isFirstParam) {
+        mUrlParam.append(isFirstParam ? "?" : "&").append(key).append("=").append(value);
+        return this;
+    }
+
+    public RequestHelper UrlParam(String key, String value) {
+        return UrlParam(key, value, false);
     }
 
     public RequestHelper PostParam(Serializable object) {
@@ -86,6 +102,13 @@ public class RequestHelper<T> {
                 mPostParam.append("&");
             }
             mPostParam.append(key).append("=").append(data.get(key));
+        }
+        return this;
+    }
+
+    public RequestHelper HeaderParam(String key, String value) {
+        if (headerProps != null) {
+            headerProps.put(key, value);
         }
         return this;
     }
@@ -214,6 +237,11 @@ public class RequestHelper<T> {
             // HAS NO SAFETY PARAMS
             connection.setRequestProperty("Content-Length", String.valueOf(mPostParam.length()));
             connection.setRequestProperty("Content-Type", "application/json");
+            //set header properties.
+            for (String key : headerProps.keySet()) {
+                connection.addRequestProperty(key, headerProps.get(key));
+            }
+
             if (mMethod == null) {
                 throw new IllegalStateException("please set Method first!!");
             }
