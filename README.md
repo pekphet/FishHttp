@@ -42,7 +42,18 @@ Happy to send email to me with suggestions or just chat with me~~~</br>
 email: pekphet@126.com</br>
 
 UPDATE 0.2  </br>
-REMOVE BaseEntity Type limit of Request result~
+REMOVE BaseEntity Type limit of Request result~<br/>
+
+UPDATE 0.3  <br/>
+fix a bug : url params adder bug~ <br/>
+support add header properties;<br/>
+add url param appender:<br/>
+1.UrlParam(REQEST_PARAMS, Boolean isFirst)<br/>
+2.UrlParam(Key,Value,Boolean isFirst)<br/>
+3.UrlParam(REQEST_PARAMS)  -> default: UrlParam(REQEST_PARAMS, true),used for single param bean;<br/>
+4.UrlParam(Key,Value) -> default: UrlParam(Key,Value,false), used for param append quickly~<br/>
+
+
 
 
 
