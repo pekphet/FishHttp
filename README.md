@@ -2,6 +2,8 @@
 A SUPER-LIGHT HTTP REQUEST UTIL<br/>
 PS: Chinese-Readme in  ReadMe-CH.md file<br/>
 
+YOU CAN SEE DEMO IN  <a href="https://github.com/pekphet/FishHttpDemo">FISHHTTP--DEMO--GET</a>
+
 This http request use Annotation & Builder mode to configure request params, so is more easily to use
 
 For android studio developers<br/>
