@@ -46,6 +46,17 @@ QQ群: 537947025<br/>
 移除BASEENTITY的限制  可以解析任何javabean<br/>
 <br/>
 
+更新0.3<br/>
+修正一个添加URL参数方法的BUG (sorry)<br/>
+支持HEADER请求参数<br/>
+HeaderParam(String key, String value)<br/>
+添加多个URL参数添加方法：<br/>
+1.UrlParam(REQEST_PARAMS, Boolean isFirst)<br/>
+2.UrlParam(Key,Value,Boolean isFirst)<br/>
+3.UrlParam(REQEST_PARAMS) -> default: UrlParam(REQEST_PARAMS, true),方便添加单参数<br/>
+4.UrlParam(Key,Value) -> default: UrlParam(Key,Value,false), 方便快速的去APPEND url参数。<br/>
+
+
 
 
 
