@@ -39,6 +39,7 @@ public class RequestHelper<T> {
     private Done<String> mFailed = null;
 
     private Map<String, String> headerProps = new HashMap<>();
+    private boolean isContentTypeJson = false;
 
 
     final static private String NO_NETWORK = "Have No Network!";
@@ -95,6 +96,10 @@ public class RequestHelper<T> {
     }
 
     public RequestHelper PostParam(Serializable object) {
+        if (isContentTypeJson) {
+            isContentTypeJson = false;
+            mPostParam = new StringBuilder();
+        }
         Map<String, Object> data = Bean2Map.trans(object);
         boolean isFirstParam = true;
         for (String key : data.keySet()) {
@@ -107,9 +112,16 @@ public class RequestHelper<T> {
             mPostParam.append(key).append("=").append(data.get(key));
             isFirstParam = false;
         }
-//        mPostParam.append(new Gson().toJson(object));
         return this;
     }
+
+    public RequestHelper PostJson(Object obj) {
+        isContentTypeJson = true;
+        mPostParam = new StringBuilder();
+        mPostParam.append(new Gson().toJson(obj));
+        return this;
+    }
+
 
     public RequestHelper HeaderParam(String key, String value) {
         if (headerProps != null) {
@@ -241,8 +253,7 @@ public class RequestHelper<T> {
             connection.setRequestProperty("Connection","Keep-Alive");
             // HAS NO SAFETY PARAMS
             connection.setRequestProperty("Content-Length", String.valueOf(mPostParam.length()));
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestProperty("Content-Type", isContentTypeJson ? "application/json" : "application/x-www-form-urlencoded");
             //set header properties.
             for (String key : headerProps.keySet()) {
                 connection.addRequestProperty(key, headerProps.get(key));
