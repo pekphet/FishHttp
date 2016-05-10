@@ -96,13 +96,18 @@ public class RequestHelper<T> {
 
     public RequestHelper PostParam(Serializable object) {
         Map<String, Object> data = Bean2Map.trans(object);
-        boolean isFirstParam = false;
+        boolean isFirstParam = true;
         for (String key : data.keySet()) {
+            if (key.contains("$")) {
+                continue;
+            }
             if (!isFirstParam) {
                 mPostParam.append("&");
             }
             mPostParam.append(key).append("=").append(data.get(key));
+            isFirstParam = false;
         }
+//        mPostParam.append(new Gson().toJson(object));
         return this;
     }
 
@@ -164,6 +169,7 @@ public class RequestHelper<T> {
 
     private void doPost(Handler h) throws IOException, NetException {
         HttpURLConnection connection = getConnection(mUrlParam.toString());
+        connection.setDoOutput(true);
         connection.connect();
         OutputStream os = connection.getOutputStream();
         os.write(mPostParam.toString().getBytes(UTF8));
@@ -230,13 +236,13 @@ public class RequestHelper<T> {
             connection = (HttpURLConnection) u.openConnection();
             connection.setConnectTimeout(TIME_OUT);
             connection.setDoInput(true);
-            connection.setDoOutput(true);
             connection.setUseCaches(false);
             connection.setRequestProperty("Charset", UTF8);
             connection.setRequestProperty("Connection","Keep-Alive");
             // HAS NO SAFETY PARAMS
             connection.setRequestProperty("Content-Length", String.valueOf(mPostParam.length()));
             connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             //set header properties.
             for (String key : headerProps.keySet()) {
                 connection.addRequestProperty(key, headerProps.get(key));
