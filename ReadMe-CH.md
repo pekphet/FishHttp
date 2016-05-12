@@ -59,6 +59,14 @@ HeaderParam(String key, String value)<br/>
 3.UrlParam(REQEST_PARAMS) -> default: UrlParam(REQEST_PARAMS, true),方便添加单参数<br/>
 4.UrlParam(Key,Value) -> default: UrlParam(Key,Value,false), 方便快速的去APPEND url参数。<br/>
 
+更新0.4<br/>
+对post请求进行调整， 支持FORM， JSON两种方式提交  
+添加参数的API：  
+FORM 使用PostParam(Serializable obj);方式添加请求体
+JSON提交使用PostJson(Object obj);API 提交
+POST测试服务器会不定期开放～
+可以加入QQ群一起讨论
+
 
 
 
