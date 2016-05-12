@@ -55,6 +55,16 @@ add url param appender:<br/>
 3.UrlParam(REQEST_PARAMS)  -> default: UrlParam(REQEST_PARAMS, true),used for single param bean;<br/>
 4.UrlParam(Key,Value) -> default: UrlParam(Key,Value,false), used for param append quickly~<br/>
 
+UPDATE 0.4<br/>
+Change POST request and FIX BUGS in POST METHOD!<br/>
+Support for 'application/x-www-form-urlencoded' and 'application/json' in 2 different API<br/>
+The API of add body-parameters:<br/>
+application/x-www-form-urlencoded use: PostParam(Serializable obj) returns RequestHelper <br/>
+application/json use : PostJson(Object obj) returns RequestHelper<br/>
+My POST METHOD server may be not open usually~ so you can use post server of your corp.<br/>
+And Come in My QQ GROUP for discussion~~<br/>
+
+
 
 
 
