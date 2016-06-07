@@ -64,6 +64,11 @@ application/json use : PostJson(Object obj) returns RequestHelper<br/>
 My POST METHOD server may be not open usually~ so you can use post server of your corp.<br/>
 And Come in My QQ GROUP for discussion~~<br/>
 
+UPDATE 0.5<BR/>
+Fix BUGS in NetInject (NP Exception QwQ)<br/>
+Post parameter adder can be used with key-value (default:NOT first)<br/>
+Add TypeToken setter  while using List<T> Generic type, U can try TypeToken instead of using Result (class)<br/>
+Add sync-post/get request method to keep sync~
 
 
 
