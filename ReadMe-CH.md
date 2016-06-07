@@ -67,6 +67,15 @@ JSON提交使用PostJson(Object obj);API 提交<br/>
 POST测试服务器会不定期开放～<br/>
 可以加入QQ群一起讨论<br/>
 
+久违的更新～～
+
+更新0.5
+
+修正一个在NetInject中出现的空指针BUG QwQ<BR/>
+PostParam添加两个方法  可以使用KEY-VALUE形式设置/添加BODY参数 默认isFirst=false<br/>
+添加Typetoken设置方法:ResultType 这次就可以使用List<T> 泛型回调了，使用方法ResultType(new TypeToken<List<T>>(){})使用这个方法就会替代Result方法传入的class<br/>
+添加同步POST/GET请求可以是请求保持同步调用:syncPost/syncGet。<br/>
+
 
 
 
