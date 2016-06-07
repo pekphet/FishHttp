@@ -21,10 +21,17 @@ public class NetInject {
                         o = new RequestHelper<>();
                     }
                     NetMethod netMethod = field.getAnnotation(NetMethod.class);
+                    if (netMethod != null) {
+                        ((RequestHelper)o).Method(netMethod.value());
+                    }
                     NetUrl netUrl = field.getAnnotation(NetUrl.class);
+                    if (netUrl != null) {
+                        ((RequestHelper)o).Url(netUrl.value());
+                    }
                     Result result = field.getAnnotation(Result.class);
-                    ((RequestHelper)o).Method(netMethod.value()).Url(netUrl.value()).Result(result.value());
-                    field.set(obj, o);
+                    if (result != null) {
+                        ((RequestHelper)o).Result(result.value());
+                    }
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();

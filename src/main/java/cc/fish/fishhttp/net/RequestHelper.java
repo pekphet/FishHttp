@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,6 +46,7 @@ public class RequestHelper<T> {
     final static private String NO_NETWORK = "Have No Network!";
     final static private String NO_IO = "I/O Exception Occurred";
     private Class<T> mResultClz ;
+    private TypeToken mTypeToken;
 
 
     public RequestHelper() {
@@ -68,6 +70,12 @@ public class RequestHelper<T> {
 
     public RequestHelper Result(Class<T> clz) {
         mResultClz = clz;
+        return this;
+    }
+
+    public RequestHelper ResultType(TypeToken token) {
+        mResultClz = null;
+        mTypeToken = token;
         return this;
     }
 
@@ -115,6 +123,20 @@ public class RequestHelper<T> {
         return this;
     }
 
+    public RequestHelper PostParam(String key, String value, boolean isFirst) {
+        if (isFirst) {
+            mPostParam = new StringBuilder();
+        } else {
+            mPostParam.append("&");
+        }
+        mPostParam.append(key).append("=").append(value);
+        return this;
+    }
+
+    public RequestHelper PostParam(String key, String value) {
+        return PostParam(key, value, false);
+    }
+
     public RequestHelper PostJson(Object obj) {
         isContentTypeJson = true;
         mPostParam = new StringBuilder();
@@ -132,12 +154,32 @@ public class RequestHelper<T> {
 
     public void post(Context context, Handler h) {
         if (!hasNet(context)) {
-            mFailed.run(NO_NETWORK);
+            doFailed(h, NO_NETWORK);
             return;
         }
         ThreadPoolManager.getInstance().addTask(() -> {
             try {
                 doPost(h);
+            } catch (IOException e) {
+                e.printStackTrace();
+                doFailed(h, NO_IO);
+            } catch (NetException e) {
+                e.printStackTrace();
+                doFailed(h, e.getCodeText());
+            }
+        });
+    }
+
+    public void syncPost(Context context, Handler h) {
+        if (!hasNet(context)) {
+            doFailed(h, NO_NETWORK);
+            return;
+        }
+        ThreadPoolManager.getInstance().addTask(() -> {
+            try {
+                synchronized (this) {
+                    doPost(h);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
                 doFailed(h, NO_IO);
@@ -156,6 +198,26 @@ public class RequestHelper<T> {
         ThreadPoolManager.getInstance().addTask(() -> {
             try {
                 doGet(h);
+            } catch (IOException e) {
+                e.printStackTrace();
+                doFailed(h, NO_IO);
+            } catch (NetException e) {
+                e.printStackTrace();
+                doFailed(h, e.getCodeText());
+            }
+        });
+    }
+
+    public void syncGet(Context context, Handler h) {
+        if (!hasNet(context)) {
+            doFailed(h, NO_NETWORK);
+            return;
+        }
+        ThreadPoolManager.getInstance().addTask(() -> {
+            try {
+                synchronized (this) {
+                    doGet(h);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
                 doFailed(h, NO_IO);
@@ -205,8 +267,17 @@ public class RequestHelper<T> {
         InputStream is = connection.getInputStream();
         String responseContent = getStrByInputStream(is);
         ZLog.e("JSON GOT", responseContent);
-        T responseObj = new Gson().fromJson(responseContent, mResultClz);
-        doSuccess(h, responseObj);
+        T responseObj;
+        if (mResultClz != null) {
+            responseObj = new Gson().fromJson(responseContent, mResultClz);
+        } else {
+            responseObj = new Gson().fromJson(responseContent, mTypeToken.getType());
+        }
+        if (responseObj == null) {
+            doFailed(h, "PLZ make sure using correct result type/class");
+        } else {
+            doSuccess(h, responseObj);
+        }
         is.close();
         connection.disconnect();
     }
