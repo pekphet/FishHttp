@@ -323,7 +323,7 @@ public class RequestHelper<T> {
             connection.setRequestProperty("Charset", UTF8);
             connection.setRequestProperty("Connection","Keep-Alive");
             // HAS NO SAFETY PARAMS
-            connection.setRequestProperty("Content-Length", String.valueOf(mPostParam.length()));
+            //connection.setRequestProperty("Content-Length", String.valueOf(mPostParam.length()));
             connection.setRequestProperty("Content-Type", isContentTypeJson ? "application/json" : "application/x-www-form-urlencoded");
             //set header properties.
             for (String key : headerProps.keySet()) {
