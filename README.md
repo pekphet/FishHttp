@@ -68,7 +68,11 @@ UPDATE 0.5<BR/>
 Fix BUGS in NetInject (NP Exception QwQ)<br/>
 Post parameter adder can be used with key-value (default:NOT first)<br/>
 Add TypeToken setter  while using List<T> Generic type, U can try TypeToken instead of using Result (class)<br/>
-Add sync-post/get request method to keep sync~
+Add sync-post/get request method to keep sync~<br/>
+
+UPDATE 0.51<BR/>
+Fix bug:  A bug of OKHttp: post chinese word will be crashed.
+
 
 
 
