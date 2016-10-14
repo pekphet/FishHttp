@@ -86,6 +86,10 @@ PostParam添加两个方法  可以使用KEY-VALUE形式设置/添加BODY参数 
 添加上传文件和图片的API,使用这个API的时候，PostParam的添加参数将会无效。
 
 
+更新1.01<br/>
+修复一个BUG：在使用UrlParam的时候，多次调用isFirst=true的参数时不会清空URL，现在可以清空了
+
+
 
 
 

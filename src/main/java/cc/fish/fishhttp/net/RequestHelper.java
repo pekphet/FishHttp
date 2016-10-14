@@ -37,6 +37,7 @@ public class RequestHelper<T> {
     final static String U_MUL_UPLOAD_BOUNDARY = "--" + MUL_UPLOAD_BOUNDARY + "\r\n";
 
     public Method mMethod;
+    private String mUrl = null;
     public StringBuilder mUrlParam = new StringBuilder();
     private StringBuilder mPostParam = new StringBuilder();
     private Done<T> mSuccess = null;
@@ -62,6 +63,7 @@ public class RequestHelper<T> {
     }
 
     public RequestHelper Url(String url) {
+        mUrl = url;
         this.mUrlParam = new StringBuilder().append(url);
         return this;
     }
@@ -98,6 +100,10 @@ public class RequestHelper<T> {
     }
 
     public RequestHelper UrlParam(String key, String value, boolean isFirstParam) {
+        if (isFirstParam) {
+            mUrlParam = new StringBuilder();
+            mUrlParam.append(mUrl);
+        }
         mUrlParam.append(isFirstParam ? "?" : "&").append(key).append("=").append(value);
         return this;
     }

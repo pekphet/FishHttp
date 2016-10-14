@@ -77,6 +77,9 @@ UPDATE 1.0<BR/>
 Add upload single file/image file support.<br/>
 Using postSingle* Method, PostParam will be not enable.<br/>
 
+UPDATE 1.01<BR/>
+FIX ONE BUG, using UrlParam will add multiple when isFirst=true<br/>
+
 
 
 
