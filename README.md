@@ -71,8 +71,11 @@ Add TypeToken setter  while using List<T> Generic type, U can try TypeToken inst
 Add sync-post/get request method to keep sync~<br/>
 
 UPDATE 0.51<BR/>
-Fix bug:  A bug of OKHttp: post chinese word will be crashed.
+Fix bug:  A bug of OKHttp: post chinese word will be crashed.<br/>
 
+UPDATE 1.0<BR/>
+Add upload single file/image file support.<br/>
+Using postSingle* Method, PostParam will be not enable.<br/>
 
 
 

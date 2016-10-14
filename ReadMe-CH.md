@@ -76,7 +76,14 @@ PostParam添加两个方法  可以使用KEY-VALUE形式设置/添加BODY参数 
 添加Typetoken设置方法:ResultType 这次就可以使用List<T> 泛型回调了，使用方法ResultType(new TypeToken<List<T>>(){})使用这个方法就会替代Result方法传入的class<br/>
 添加同步POST/GET请求可以是请求保持同步调用:syncPost/syncGet。<br/>
 
+更新0.51
 
+
+修复参数带有中文时会crash的一个BUG, 这是HttpUrlConnection的一个BUG。
+
+
+更新1.0<br/>
+添加上传文件和图片的API,使用这个API的时候，PostParam的添加参数将会无效。
 
 
 
