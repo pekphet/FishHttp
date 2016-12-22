@@ -133,6 +133,7 @@ public class RequestHelper<T> {
     }
 
     public RequestHelper PostParam(String key, String value, boolean isFirst) {
+        isContentTypeJson = false;
         if (isFirst) {
             mPostParam = new StringBuilder();
         } else {
