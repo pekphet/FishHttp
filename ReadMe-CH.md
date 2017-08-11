@@ -16,8 +16,7 @@ android.permission.INTERNET<br/>
 android.permission.READ_PHONE_STATE<br/>
 android.permission.ACCESS_NETWORK_STATE<br/>
 android.permission.ACCESS_WIFI_STATE<br/>
-5.在工程的build.gradle的buildscript -> dependencies节点添加<br/>
-classpath 'me.tatarka:gradle-retrolambda:3.2.5' 支持lambda表达式<br/>
+
 
 开始使用：<br/>
 1.创建一个RequestHelper的实例 就像这样<br/>
@@ -89,6 +88,9 @@ PostParam添加两个方法  可以使用KEY-VALUE形式设置/添加BODY参数 
 更新1.01<br/>
 修复一个BUG：在使用UrlParam的时候，多次调用isFirst=true的参数时不会清空URL，现在可以清空了
 
+更新1.1<br/>
+完全去掉LAMBDA依赖， 支持https协议，支持双向认证，优化代码，可以直接依赖使用，无需修改gradle文件
+建议配合KOTLIN使用
 
 
 

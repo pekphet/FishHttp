@@ -80,7 +80,8 @@ Using postSingle* Method, PostParam will be not enable.<br/>
 UPDATE 1.01<BR/>
 FIX ONE BUG, using UrlParam will add multiple when isFirst=true<br/>
 
-
+UPDATE 1.1<BR/>
+NEEDN'T EDIT GRADLE FILES, SUPPORT HTTPS, TLS 2-WAY-AUTH SUPPORTS, REFACTOR CODES
 
 
 

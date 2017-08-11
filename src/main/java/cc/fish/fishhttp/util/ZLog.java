@@ -30,16 +30,18 @@ public class ZLog {
         }
     }
 
-    public static void w(String tag, String msg) {
+    public static String w(String tag, String msg) {
         if (WARNING) {
             Log.w(tag, msg);
         }
+        return msg;
     }
 
-    public static void e(String tag, String msg) {
+    public static String e(String tag, String msg) {
         if (ERROR) {
             Log.e(tag, msg);
         }
+        return msg;
     }
 
 }
